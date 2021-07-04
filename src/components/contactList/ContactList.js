@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { deletedItem } from "../../redux/actions";
+import { filteredItemsSelector } from "../../redux/selector";
+import { removeContacts } from "../../redux/operations";
 
 const ContactList = ({ items, handleDelete }) => {
   return (
@@ -25,19 +26,13 @@ ContactList.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const { items, filter } = state;
-
-  const formattedFilter = filter.toLowerCase().trim();
-  const filteredItems = items.filter((item) =>
-    item.name.toLowerCase().includes(formattedFilter)
-  );
   return {
-    items: filteredItems,
+    items: filteredItemsSelector(state),
   };
 };
 
 const mapDispatchToProps = {
-  handleDelete: deletedItem,
+  handleDelete: removeContacts,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./ContactForm.module.css";
-import { addNewToList } from "../../redux/actions";
 import { connect } from "react-redux";
+import { contactsItemsSelector, loadingSelector } from "../../redux/selector";
+import { addNewContacts, getAllContacts } from "../../redux/operations";
 
 class ContactForm extends Component {
   static propTypes = {
@@ -28,7 +29,7 @@ class ContactForm extends Component {
       number: number,
     };
 
-    this.props.addNewToList(newContact);
+    this.props.addNewContacts(newContact);
   };
 
   handleChange = (evt) => {
@@ -84,12 +85,13 @@ class ContactForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    items: state.items,
+    items: contactsItemsSelector(state),
+    loading: loadingSelector(state),
   };
 };
 
 const mapDispatchToProps = {
-  addNewToList,
+  addNewContacts,
+  getAllContacts,
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

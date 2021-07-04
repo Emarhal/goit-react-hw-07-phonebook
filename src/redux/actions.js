@@ -1,34 +1,34 @@
 import { createAction } from "@reduxjs/toolkit";
 
-// const ADD_TO_LIST = "list/addToList";
-// const DELETED_ITEM = "list/deletedItem";
-// const FILTER_CHANGE = "filter/filterChange";
+const addNewContactsRequest = createAction("contacts/addNewContactsRequest");
+const addNewContactsSuccess = createAction("contacts/addNewContactsSuccess");
+const addNewContactsError = createAction("contacts/addNewContactsError");
 
-// export { ADD_TO_LIST, DELETED_ITEM, FILTER_CHANGE };
+const getAllContactsRequest = createAction("contacts/getAllContactsRequest");
+const getAllContactsSuccess = createAction("contacts/getAllContactsSuccess");
+const getAllContactsError = createAction("contacts/getAllContactsError");
 
-const addNewToList = createAction("list/addToList");
-const deletedItem = createAction("list/deletedItem");
-const filterChange = createAction("filter/filterChange");
-//  ============== Old
-// const addNewToList = (payload) => {
-//   return {
-//     type: ADD_TO_LIST,
-//     payload,
-//   };
-// };
+const filterChange = createAction("contacts/filterChange");
 
-// const deletedItem = (payload) => {
-//   return {
-//     type: DELETED_ITEM,
-//     payload,
-//   };
-// };
+const removeContactsRequest = createAction("contacts/removeContactsRequest");
+const removeContactsSuccess = createAction("contacts/removeContactsSuccess");
+const removeContactsError = createAction("contacts/removeContactsError");
 
-// const filterChange = (payload) => {
-//   return {
-//     type: FILTER_CHANGE,
-//     payload,
-//   };
-// };
+export {
+  addNewContactsRequest,
+  addNewContactsSuccess,
+  addNewContactsError,
+  getAllContactsRequest,
+  getAllContactsSuccess,
+  getAllContactsError,
+  filterChange,
+  removeContactsRequest,
+  removeContactsSuccess,
+  removeContactsError,
+};
 
-export { addNewToList, deletedItem, filterChange };
+// const addNewToList = createAction("list/addToList");
+// const deletedItem = createAction("list/deletedItem");
+// const filterChange = createAction("filter/filterChange");
+
+// export { addNewToList, deletedItem, filterChange };
